@@ -13,8 +13,7 @@ To prevent data exfiltration and enforce strict access controls, the AI applicat
 *   **Ingress Zero Trust:** Client traffic is routed via a Split-Brain DNS architecture through an Application Gateway (WAF) and API Management (APIM) before reaching the App Service via Private Endpoint.
 *   **Egress Inspection:** Outbound agent compute traffic is forced via VNet Integration and a `0.0.0.0/0` User Defined Route (UDR) to Azure Firewall, terminating at Zscaler Internet Access (ZIA) for Layer 7 DLP and URL filtering.
 
-![Azure AI Network Security Architecture](./Azure_AI_Network_Security_Architecture_-_Gabriel_Thomas.drawio.jpg)
-*(Note: Ensure your image file is in the repository and the path matches)*
+![Azure AI Network Security Architecture](./Azure%20AI%20Network%20Security%20Architecture%20-%20Gabriel%20Thomas.drawio.png)
 
 ---
 
@@ -24,7 +23,8 @@ This architecture mandates a **Dual-Identity Model**, strictly separating the in
 1.  **System-Assigned Identity:** The AI Agent authenticates to the Azure PaaS dependencies (like Azure OpenAI and Key Vault) using its own Managed Identity (Control Plane).
 2.  **OAuth 2.0 On-Behalf-Of (OBO) Flow:** To access downstream tools (e.g., Sales Database), the Agent exchanges the user's session token for a scoped OBO token. The downstream API verifies the Entra ID cryptographic signature, ensuring access control is evaluated against the *human user*, not the AI application.
 
-![Identity & Authorization Sequence Diagram](./Identity_&_Authorization_Sequence_Diagram_-_Gabriel_Thomas_2.jpg)
+![Identity & Authorization Sequence Diagram](./Identity%20%26%20Authorization%20Sequence%20Diagram%20-%20Gabriel%20Thomas.png)
+
 
 ### IAM Least Privilege Matrix (Managed Identity)
 The AI Application's Managed Identity is restricted to the following Azure built-in roles:
